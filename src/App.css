@@ -28,6 +28,60 @@
   color: #61dafb;
 }
 
+button{
+  cursor: pointer;
+}
+div{
+  margin: 20px;
+}
+.movie{
+  display: inline-block;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 2px #ccc;
+  width: 200px;
+  text-align: center;
+  margin: 10px;
+  cursor: pointer;
+}
+.calculator{
+  display: inline-flex;
+  flex-direction: column;
+  text-align: center;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 2px #ccc;
+  width: 350px;
+  padding: 20px;
+}
+
+.movies{
+  display: inline-flex;
+  flex-direction: column;
+  text-align: center;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 2px #ccc;
+  width: 350px;
+  padding: 20px;
+}
+input{
+  /* text-align: center; */
+  display: block;
+  height:40px;
+  margin: 20px 0;
+}
+button{
+  height: 50px;
+  background-color: deepskyblue;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 2px #ccc;
+  color: black;
+  font-size: 24px;
+
+}
+
+
+
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
