@@ -11,12 +11,12 @@ export default class Movies extends React.Component{
         movies:[],
     };
 
-    getMovies = () => {
-        axios.get('/movies.json').then((response)=>{
-            console.log('response ',response.data);
-            const data = 
-        })
-    }
+    // getMovies = () => {
+    //     axios.get('/movies.json').then((response)=>{
+    //         console.log('response ',response.data);
+    //         const data = 
+    //     })
+    // }
     handleRatingChange = (event) =>{
         this.setState({rating:event.target.value});
     };
@@ -42,7 +42,7 @@ export default class Movies extends React.Component{
              
         })
         .catch((error)=>console.log('error ',error));
-
+ 
         updatedMovies.push(movie);
         this.setState({movies:updatedMovies, name:'',rating:''});
     }
