@@ -8,6 +8,7 @@ import Calculator from './components/Calculator/Calculator';
 
 import Users from './components/Lifecycle/Users';
 import RealCaculator from './RealCalculator';
+import Sync from './components/Sync/Sync';
 class App extends React.Component{
   state ={
     name:'Ran'
@@ -20,8 +21,8 @@ class App extends React.Component{
       <div className="App">
           {/* <h1>Name: {this.state.name}</h1>
           <input type="text" onChange={this.handleNameChange} value={this.state.name}/> */}
-          {/* <Movies /> */}
-          <RealCaculator />
+          <Movies />
+          
       
       </div>
     );

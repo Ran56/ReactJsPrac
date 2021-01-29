@@ -21,9 +21,9 @@ export default class Users extends Component {
             <div>
                 <h1>Users Component</h1>
                 
-                {/* {this.state.name === 'Ran' ? <User name = {this.state.name}/>:null} */}
+                {this.state.name === 'Ran' ? <User name = {this.state.name}/>:null}
                 {/* //equal to this line */}
-                {this.state.name === 'Ran' && <User name = {this.state.name}/>}
+                {/* {this.state.name === 'Ran' && <User name = {this.state.name}/>} */}
 
                 <button onClick={this.changeName}>Change Name</button>
             </div>

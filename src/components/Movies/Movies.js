@@ -1,5 +1,7 @@
 import React from 'react';
 import Movie from './Movie';
+import axios from '../axios';
+
 
 export default class Movies extends React.Component{
  
@@ -7,20 +9,43 @@ export default class Movies extends React.Component{
         name:'',
         rating: '',
         movies:[],
-        id:0
-    }
+    };
+
+    // getMovies = () => {
+    //     axios.get('/movies.json').then((response)=>{
+    //         console.log('response ',response.data);
+    //         const data = 
+    //     })
+    // }
     handleRatingChange = (event) =>{
         this.setState({rating:event.target.value});
-    }
+    };
+
     handleNameChange = (event) =>{
         this.setState({name: event.target.value});
     }
     
     
-    handleAdd = () => {
+    handleAdd = async () => {
         const updatedMovies = this.state.movies;
 
-        updatedMovies.push({name: this.state.name,rating:this.state.rating,id:this.state.id+1});
+        const movie = {name:this.state.name,rating:this.state.rating};
+
+        let key; 
+        await axios
+        .post('/movies.json',movie)
+        .then((response) => {
+            console.log('response',response);
+            key = response.data.name;
+            movie.key = key;
+            movie.ssss = 1;
+            console.log(movie);
+            
+        })
+        .catch((error)=>console.log('error ',error));
+
+
+        updatedMovies.push(movie);
 
         this.setState({movies:updatedMovies, name:'',rating:''});
     }
