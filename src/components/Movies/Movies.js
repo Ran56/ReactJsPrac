@@ -1,7 +1,7 @@
 import React from 'react';
 import Movie from './Movie';
 import axios from '../axios';
-
+import {ClipLoader} from 'react-spinners';
 
 export default class Movies extends React.Component{
  
@@ -9,14 +9,33 @@ export default class Movies extends React.Component{
         name:'',
         rating: '',
         movies:[],
+        loading: true
     };
 
-    // getMovies = () => {
-    //     axios.get('/movies.json').then((response)=>{
-    //         console.log('response ',response.data);
-    //         const data = 
-    //     })
-    // }
+    getMovies = () => {
+        axios.get('/movies.json').then((response)=>{
+            console.log('response ',response.data);
+            const data = response.data;
+            if(!data) return;
+
+            const movies = [];
+            Object.entries(data).map(item => movies.push({
+                key:item[0],...item[1]
+                // Object.entries(data) is an array
+                //.map will be a for loop
+            }));
+            this.setState({movies:movies,loading:false});
+            
+            console.log(Object.entries(data));
+        })
+    }
+
+    componentDidMount = () => {
+        console.log('componentDidMount...');
+        this.getMovies();
+    }
+
+
     handleRatingChange = (event) =>{
         this.setState({rating:event.target.value});
     };
@@ -51,16 +70,20 @@ export default class Movies extends React.Component{
     handleDelete = (deleteMovie) => {
         console.log('handleDelete => delete a movie from here',deleteMovie);
 
-        const movies = this.state.movies;
 
-        this.setState({movies:movies.filter(movie => movie.name !== deleteMovie.name)});
-    }
+        let movies = this.state.movies;
 
+        movies = movies.filter((movie)=>movie.key !== deleteMovie.key)
+        
+        this.setState({movies:movies});
 
+        console.log(deleteMovie.key);
 
-    componentDidMount = () => {
-        console.log('componentDidMount...');
-    }
+        axios.delete(`/movies/${deleteMovie.key}.json`);
+        //!!!note this symbol `` when using ${} environment variable
+        //we have to use ``, no include ${} we can use both '' and ``
+    };
+
     render(){
         return(
             <div>
@@ -71,13 +94,22 @@ export default class Movies extends React.Component{
                 </div>
                 <div>
                     {
-                        // this.state.movies.map(movie => <Movie movie={movie} deleteMovie={this.handleDelete} key={movie.name}/>)//if no key to specify unique element, may cause some warnings 
-                                                                        //deleteMovie method will first tranmit into Moive props
-                                                                        //then in Movie pass value into handleDelete method
-                        this.state.movies.map((movie,index) => <Movie movie={movie} deleteMovie={this.handleDelete} key={index}/>)
-
+                        this.state.loading?
+                        (<div>
+                            <ClipLoader loading />
+                        </div>
+                        ):(<div>
+                        {
+                            // this.state.movies.map(movie => <Movie movie={movie} deleteMovie={this.handleDelete} key={movie.name}/>)//if no key to specify unique element, may cause some warnings 
+                                                                            //deleteMovie method will first tranmit into Moive props
+                                                                            //then in Movie pass value into handleDelete method
+                            this.state.movies.map((movie,index) => <Movie movie={movie} deleteMovie={this.handleDelete} key={index}/>)
+    
+                        }
+                    </div>)
                     }
                 </div>
+                
             </div>
         );
         
