@@ -1,7 +1,7 @@
 //class based component
 import React, { Component } from 'react';
 
-class Users extends Component{
+class Users121 extends Component{
 
     state = {//we can use state put data inside it so that can update some data
         //other component like data, we cannot update its properties or value
@@ -47,4 +47,4 @@ class Users extends Component{
         );
     }
 }
-export default Users;
+export default Users121;

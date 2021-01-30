@@ -17,7 +17,7 @@ function createUser(user){
 
 createUser({name:'Zhang',age:19})
 
-printUsers()
+// printUsers()
 
 export default function Sync(){
     return(

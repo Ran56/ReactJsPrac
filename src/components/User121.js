@@ -1,9 +1,9 @@
 import React from 'react';
 //functional component
-function User(props){
+function User121(props){
     return(
     <h1>{props.name}</h1>
     );
 }
 
-export default User;
+export default User121;
