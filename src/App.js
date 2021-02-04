@@ -23,6 +23,9 @@ import ComponentA from './components/Context/ComponentA';
 import ComponentB from './components/Context/ComponentB';
 import ComponentD from './components/Context/ComponentD';
 import Rountes from './components/Routing/Routes';
+import Prac from './components/prac/Prac';
+import UseRef from './components/prac/UseRef';
+
 
 
 export const UserContext = React.createContext();
@@ -49,7 +52,7 @@ class App extends React.Component{
       <div className="App">
           {/* <h1>Name: {this.state.name}</h1>
           <input type="text" onChange={this.handleNameChange} value={this.state.name}/> */}
-          <Movies />
+          {/* <Movies /> */}
           {/* <Movie> Ran Zhang </Movie> */}
           {/* {<UsersGet />} */}
           {/* <Users /> */}
@@ -72,7 +75,7 @@ class App extends React.Component{
 
           {/* <Rountes /> */}
 
-
+          <UseRef />
       </div>
     );
   }
